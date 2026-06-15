@@ -315,19 +315,19 @@ function receiptText(sale) {
   return lines.join("\n");
 }
 
-function Card({ children, className = "" }) { return <div className={`rounded-2xl border border-blue-100 bg-white/90 shadow-[0_16px_40px_rgba(37,99,235,0.08)] ${className}`}>{children}</div>; }
+function Card({ children, className = "" }) { return <div className={`rounded-2xl border border-emerald-100 bg-white/90 shadow-[0_16px_40px_rgba(16,185,129,0.10)] ${className}`}>{children}</div>; }
 function IconBox({ children, tone = "blue" }) {
-  const tones = { blue: "bg-blue-50 text-blue-600", amber: "bg-amber-50 text-amber-500", red: "bg-red-50 text-red-500" };
+  const tones = { blue: "bg-emerald-50 text-emerald-600", amber: "bg-amber-50 text-amber-500", red: "bg-red-50 text-red-500" };
   return <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${tones[tone]}`}>{children}</div>;
 }
 function Field({ label, value, onChange, placeholder, type = "text" }) {
-  return <label className="block"><span className="mb-2 block text-sm font-semibold text-slate-500">{label}</span><input type={type} value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} className="h-11 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm text-slate-950 outline-none transition focus:border-blue-400 focus:ring-4 focus:ring-blue-100" /></label>;
+  return <label className="block"><span className="mb-2 block text-sm font-semibold text-slate-500">{label}</span><input type={type} value={value} placeholder={placeholder} onChange={(e) => onChange(e.target.value)} className="h-11 w-full rounded-2xl border border-slate-200 bg-white px-4 text-sm text-slate-950 outline-none transition focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100" /></label>;
 }
 function AppHeader({ onOpenMenu }) {
   return (
     <header className="mb-5 flex items-center justify-between gap-3">
       <div className="flex min-w-0 items-center gap-3">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
           <House size={25} strokeWidth={2.4} />
         </div>
 
@@ -337,7 +337,7 @@ function AppHeader({ onOpenMenu }) {
           </h1>
 
           <p className="mt-0.5 flex items-center gap-1.5 text-[10px] font-medium text-slate-500">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-500" />
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
             Offline mode
           </p>
         </div>
@@ -347,7 +347,7 @@ function AppHeader({ onOpenMenu }) {
         type="button"
         onClick={onOpenMenu}
         aria-label="Open navigation menu"
-        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-blue-100 bg-white text-slate-700 shadow-sm transition active:scale-95"
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-emerald-100 bg-white text-slate-700 shadow-sm transition active:scale-95"
       >
         <Menu size={22} strokeWidth={2.4} />
       </button>
@@ -374,11 +374,11 @@ function SideMenu({ open, onClose, items, activeTab, onSelect }) {
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
             transition={{ type: "spring", stiffness: 340, damping: 34 }}
-            className="fixed bottom-0 right-0 top-0 z-[60] w-[82%] max-w-[310px] overflow-y-auto border-l border-blue-100 bg-white p-4 shadow-2xl"
+            className="fixed bottom-0 right-0 top-0 z-[60] w-[82%] max-w-[310px] overflow-y-auto border-l border-emerald-100 bg-white p-4 shadow-2xl"
           >
             <div className="mb-5 flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-blue-50 text-blue-600">
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-50 text-emerald-600">
                   <House size={22} />
                 </div>
                 <div>
@@ -404,8 +404,8 @@ function SideMenu({ open, onClose, items, activeTab, onSelect }) {
                   onClick={() => onSelect(key)}
                   className={`flex w-full items-center gap-3 rounded-2xl px-3 py-3 text-left text-sm font-semibold transition ${
                     activeTab === key
-                      ? "bg-blue-600 text-white shadow-md shadow-blue-100"
-                      : "text-slate-600 hover:bg-blue-50 hover:text-blue-700"
+                      ? "bg-emerald-600 text-white shadow-md shadow-emerald-100"
+                      : "text-slate-600 hover:bg-emerald-50 hover:text-emerald-700"
                   }`}
                 >
                   <Icon size={20} strokeWidth={activeTab === key ? 2.7 : 2.2} />
@@ -422,7 +422,7 @@ function SideMenu({ open, onClose, items, activeTab, onSelect }) {
 }
 
 function Modal({ title, onClose, children }) {
-  return <AnimatePresence><motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/45 p-4 backdrop-blur-sm"><motion.div initial={{ y: 40, scale: 0.96, opacity: 0 }} animate={{ y: 0, scale: 1, opacity: 1 }} exit={{ y: 40, scale: 0.96, opacity: 0 }} className="max-h-[88vh] w-full max-w-md overflow-y-auto rounded-2xl border border-blue-100 bg-white p-4 shadow-2xl"><div className="mb-6 flex items-center justify-between"><h2 className="text-xl font-black tracking-tight text-slate-950">{title}</h2><button onClick={onClose} className="flex items-center gap-2 rounded-2xl bg-blue-50 px-4 py-3 font-bold text-blue-700"><X size={20} /> Close</button></div>{children}</motion.div></motion.div></AnimatePresence>;
+  return <AnimatePresence><motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/45 p-4 backdrop-blur-sm"><motion.div initial={{ y: 40, scale: 0.96, opacity: 0 }} animate={{ y: 0, scale: 1, opacity: 1 }} exit={{ y: 40, scale: 0.96, opacity: 0 }} className="max-h-[88vh] w-full max-w-md overflow-y-auto rounded-2xl border border-emerald-100 bg-white p-4 shadow-2xl"><div className="mb-6 flex items-center justify-between"><h2 className="text-xl font-black tracking-tight text-slate-950">{title}</h2><button onClick={onClose} className="flex items-center gap-2 rounded-2xl bg-emerald-50 px-4 py-3 font-bold text-emerald-700"><X size={20} /> Close</button></div>{children}</motion.div></motion.div></AnimatePresence>;
 }
 
 export default function HeinsInventoryApp() {
@@ -681,7 +681,7 @@ export default function HeinsInventoryApp() {
 
   const navItems = [["home", Home, t("home")], ["sell", ShoppingCart, t("sell")], ["categories", Package, t("categories")], ["customers", Users, t("customers")], ["salesHistory", ClipboardList, t("salesHistory")], ["reports", BarChart3, t("reports")], ["settings", Settings, t("settings")]];
 
-  return <div className="min-h-screen bg-gradient-to-b from-white via-sky-50/40 to-white font-sans text-sm text-slate-950"><div className="mx-auto max-w-3xl px-4 pb-8 pt-4"><AppHeader onOpenMenu={() => setMenuOpen(true)} />{tab === "home" && <HomePage t={t} setTab={setTab} todayReport={todayReport} lowStockCount={lowStockCount} products={data.products} sales={data.sales} openReceipt={setReceiptSale} />}{tab === "sell" && <SellPage t={t} customers={data.customers} cart={cart} updateQty={updateQty} cartTotal={cartTotal} cashReceived={cashReceived} setCashReceived={setCashReceived} change={change} completeSale={completeSale} setAddItemsModal={setAddItemsModal} selectedCustomerId={selectedCustomerId} setSelectedCustomerId={setSelectedCustomerId} />}{tab === "categories" && <CategoriesPage
+  return <div className="min-h-screen bg-gradient-to-b from-white via-emerald-50/40 to-white font-sans text-sm text-slate-950"><div className="mx-auto max-w-3xl px-4 pb-8 pt-4"><AppHeader onOpenMenu={() => setMenuOpen(true)} />{tab === "home" && <HomePage t={t} setTab={setTab} todayReport={todayReport} lowStockCount={lowStockCount} products={data.products} sales={data.sales} openReceipt={setReceiptSale} />}{tab === "sell" && <SellPage t={t} customers={data.customers} cart={cart} updateQty={updateQty} cartTotal={cartTotal} cashReceived={cashReceived} setCashReceived={setCashReceived} change={change} completeSale={completeSale} setAddItemsModal={setAddItemsModal} selectedCustomerId={selectedCustomerId} setSelectedCustomerId={setSelectedCustomerId} />}{tab === "categories" && <CategoriesPage
   t={t}
   categories={data.categories}
   products={data.products}
@@ -710,11 +710,11 @@ export default function HeinsInventoryApp() {
 }
 
 function HomePage({ t, setTab, todayReport, lowStockCount, products, sales, openReceipt }) {
-  return <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-4"><Card className="overflow-hidden bg-gradient-to-br from-blue-50 via-white to-sky-50 p-4"><div className="flex items-center justify-between gap-4"><div><p className="font-bold text-blue-600">{t("today")}</p><h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950">{formatMoney(todayReport.revenue)}</h2><p className="mt-3 text-sm font-medium text-slate-500">{todayReport.sales.length} {t("ordersCompleted")}</p></div><button onClick={() => setTab("sell")} className="flex shrink-0 items-center gap-3 rounded-2xl bg-blue-600 px-5 py-3 text-base font-black text-white shadow-lg shadow-blue-200"><ShoppingCart /> {t("sell")}</button></div></Card><div className="grid grid-cols-2 gap-4 sm:grid-cols-3"><Stat icon={<ClipboardList />} label="Orders" value={todayReport.sales.length} sub="completed" /><Stat icon={<TrendingUp />} label={t("profit")} value={formatMoney(todayReport.profit)} /><Stat icon={<Wallet />} label={t("net")} value={formatMoney(todayReport.net)} /><Stat icon={<FileText />} label={t("expenses")} value={formatMoney(todayReport.expenseTotal)} /><Stat icon={<Package />} label={t("products")} value={products.length} sub="items" /><Stat icon={<AlertCircle />} label="Low stock" value={lowStockCount} sub="items" tone="amber" /></div><Card className="p-4"><h3 className="text-lg font-black">Needs attention</h3><div className="mt-5 flex items-center gap-4 rounded-3xl bg-blue-50 p-4"><CheckCircle2 className="text-blue-600" size={34} /><div><p className="text-base font-bold">{lowStockCount ? `${lowStockCount} low stock items` : "Inventory looks healthy"}</p><p className="mt-1 text-slate-500">{lowStockCount ? "Please check Products page." : "Great! All items are well stocked."}</p></div></div></Card><ReceiptList title={t("recentSales")} sales={sales.slice(0, 4)} openReceipt={openReceipt} empty="No sales yet" /></motion.div>;
+  return <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-4"><Card className="overflow-hidden bg-gradient-to-br from-emerald-50 via-white to-emerald-50 p-4"><div className="flex items-center justify-between gap-4"><div><p className="font-bold text-emerald-600">{t("today")}</p><h2 className="mt-3 text-3xl font-black tracking-tight text-slate-950">{formatMoney(todayReport.revenue)}</h2><p className="mt-3 text-sm font-medium text-slate-500">{todayReport.sales.length} {t("ordersCompleted")}</p></div><button onClick={() => setTab("sell")} className="flex shrink-0 items-center gap-3 rounded-2xl bg-emerald-600 px-5 py-3 text-base font-black text-white shadow-lg shadow-emerald-100"><ShoppingCart /> {t("sell")}</button></div></Card><div className="grid grid-cols-2 gap-4 sm:grid-cols-3"><Stat icon={<ClipboardList />} label="Orders" value={todayReport.sales.length} sub="completed" /><Stat icon={<TrendingUp />} label={t("profit")} value={formatMoney(todayReport.profit)} /><Stat icon={<Wallet />} label={t("net")} value={formatMoney(todayReport.net)} /><Stat icon={<FileText />} label={t("expenses")} value={formatMoney(todayReport.expenseTotal)} /><Stat icon={<Package />} label={t("products")} value={products.length} sub="items" /><Stat icon={<AlertCircle />} label="Low stock" value={lowStockCount} sub="items" tone="amber" /></div><Card className="p-4"><h3 className="text-lg font-black">Needs attention</h3><div className="mt-5 flex items-center gap-4 rounded-3xl bg-emerald-50 p-4"><CheckCircle2 className="text-emerald-600" size={34} /><div><p className="text-base font-bold">{lowStockCount ? `${lowStockCount} low stock items` : "Inventory looks healthy"}</p><p className="mt-1 text-slate-500">{lowStockCount ? "Please check Products page." : "Great! All items are well stocked."}</p></div></div></Card><ReceiptList title={t("recentSales")} sales={sales.slice(0, 4)} openReceipt={openReceipt} empty="No sales yet" /></motion.div>;
 }
 function Stat({ icon, label, value, sub, tone = "blue" }) { return <Card className="p-4"><IconBox tone={tone}>{icon}</IconBox><p className="mt-4 font-bold text-slate-500">{label}</p><p className="mt-3 text-lg font-black tracking-tight">{value}</p>{sub && <p className="mt-1 text-slate-500">{sub}</p>}</Card>; }
 function SellPage({ t, customers, cart, updateQty, cartTotal, cashReceived, setCashReceived, change, completeSale, setAddItemsModal, selectedCustomerId, setSelectedCustomerId }) {
-  return <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-4"><h2 className="text-2xl font-black">{t("sell")}</h2><button onClick={() => setAddItemsModal(true)} className="flex h-12 w-full items-center justify-center gap-3 rounded-2xl border border-blue-100 bg-white text-base font-black text-blue-700 shadow-sm"><Search /> {t("addItems")}</button><Card className="p-4"><label className="mb-2 block font-bold text-slate-500">{t("customer")}</label><select value={selectedCustomerId} onChange={(e) => setSelectedCustomerId(e.target.value)} className="h-11 w-full rounded-2xl border border-slate-200 px-4 text-sm font-bold outline-none"><option value="">{t("noCustomer")}</option>{customers.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}</select></Card><Card className="p-4"><div className="mb-5 flex items-center justify-between"><h3 className="text-xl font-black">{t("currentSale")}</h3><span className="font-bold text-slate-500">{cart.length} item types</span></div>{cart.length === 0 ? <div className="rounded-3xl border border-dashed border-blue-200 p-4 text-center text-slate-500"><ShoppingCart className="mx-auto mb-3" /><p className="text-base font-bold">{t("cartEmpty")}</p></div> : cart.map((item) => <div key={item.productId} className="mb-3 flex items-center justify-between rounded-2xl border border-blue-100 p-4"><div><p className="font-black">{item.productName}</p><p className="text-sm text-slate-500">{formatMoney(item.sellPrice)} x {item.quantity}</p></div><div className="flex items-center gap-2"><button onClick={() => updateQty(item.productId, -1)} className="rounded-xl bg-blue-50 p-2 text-blue-700"><Minus size={18} /></button><span className="w-8 text-center font-black">{item.quantity}</span><button onClick={() => updateQty(item.productId, 1)} className="rounded-xl bg-blue-50 p-2 text-blue-700"><Plus size={18} /></button></div></div>)}<div className="mt-5 flex items-center justify-between"><p className="text-base font-bold text-slate-500">{t("total")}</p><p className="text-2xl font-black">{formatMoney(cartTotal)}</p></div><input value={cashReceived} onChange={(e) => setCashReceived(e.target.value)} type="number" placeholder={t("cashReceived")} className="mt-5 h-12 w-full rounded-2xl border border-slate-200 px-5 text-base outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100" /><div className="mt-5 flex items-center justify-between"><p className="text-base font-bold text-slate-500">{t("change")}</p><p className="text-xl font-black">{formatMoney(change)}</p></div><button onClick={completeSale} className="mt-6 flex h-12 w-full items-center justify-center gap-3 rounded-3xl bg-blue-600 text-base font-black text-white shadow-lg shadow-blue-100"><CheckCircle2 /> {t("completeSale")}</button></Card></motion.div>;
+  return <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-4"><h2 className="text-2xl font-black">{t("sell")}</h2><button onClick={() => setAddItemsModal(true)} className="flex h-12 w-full items-center justify-center gap-3 rounded-2xl border border-emerald-100 bg-white text-base font-black text-emerald-700 shadow-sm"><Search /> {t("addItems")}</button><Card className="p-4"><label className="mb-2 block font-bold text-slate-500">{t("customer")}</label><select value={selectedCustomerId} onChange={(e) => setSelectedCustomerId(e.target.value)} className="h-11 w-full rounded-2xl border border-slate-200 px-4 text-sm font-bold outline-none"><option value="">{t("noCustomer")}</option>{customers.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}</select></Card><Card className="p-4"><div className="mb-5 flex items-center justify-between"><h3 className="text-xl font-black">{t("currentSale")}</h3><span className="font-bold text-slate-500">{cart.length} item types</span></div>{cart.length === 0 ? <div className="rounded-3xl border border-dashed border-emerald-200 p-4 text-center text-slate-500"><ShoppingCart className="mx-auto mb-3" /><p className="text-base font-bold">{t("cartEmpty")}</p></div> : cart.map((item) => <div key={item.productId} className="mb-3 flex items-center justify-between rounded-2xl border border-emerald-100 p-4"><div><p className="font-black">{item.productName}</p><p className="text-sm text-slate-500">{formatMoney(item.sellPrice)} x {item.quantity}</p></div><div className="flex items-center gap-2"><button onClick={() => updateQty(item.productId, -1)} className="rounded-xl bg-emerald-50 p-2 text-emerald-700"><Minus size={18} /></button><span className="w-8 text-center font-black">{item.quantity}</span><button onClick={() => updateQty(item.productId, 1)} className="rounded-xl bg-emerald-50 p-2 text-emerald-700"><Plus size={18} /></button></div></div>)}<div className="mt-5 flex items-center justify-between"><p className="text-base font-bold text-slate-500">{t("total")}</p><p className="text-2xl font-black">{formatMoney(cartTotal)}</p></div><input value={cashReceived} onChange={(e) => setCashReceived(e.target.value)} type="number" placeholder={t("cashReceived")} className="mt-5 h-12 w-full rounded-2xl border border-slate-200 px-5 text-base outline-none focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100" /><div className="mt-5 flex items-center justify-between"><p className="text-base font-bold text-slate-500">{t("change")}</p><p className="text-xl font-black">{formatMoney(change)}</p></div><button onClick={completeSale} className="mt-6 flex h-12 w-full items-center justify-center gap-3 rounded-3xl bg-emerald-600 text-base font-black text-white shadow-lg shadow-emerald-100"><CheckCircle2 /> {t("completeSale")}</button></Card></motion.div>;
 }
 function CategoriesPage({
   t,
@@ -755,7 +755,7 @@ function CategoriesPage({
             setSelectedCategoryId("");
             setProductSearch("");
           }}
-          className="flex items-center gap-2 font-black text-blue-700"
+          className="flex items-center gap-2 font-black text-emerald-700"
         >
           <ArrowLeft size={20} /> {t("categories")}
         </button>
@@ -769,7 +769,7 @@ function CategoriesPage({
           </div>
           <button
             onClick={() => openAddProduct(selectedCategory.id)}
-            className="flex items-center gap-3 rounded-2xl bg-blue-600 px-5 py-3 text-sm font-black text-white"
+            className="flex items-center gap-3 rounded-2xl bg-emerald-600 px-5 py-3 text-sm font-black text-white"
           >
             <PlusCircle /> {t("addItem")}
           </button>
@@ -801,7 +801,7 @@ function CategoriesPage({
                     className={`inline-flex rounded-2xl px-4 py-2 font-black ${
                       product.stock <= product.lowStockAlert
                         ? "bg-amber-50 text-amber-600"
-                        : "bg-blue-50 text-blue-700"
+                        : "bg-emerald-50 text-emerald-700"
                     }`}
                   >
                     {product.stock} left
@@ -809,7 +809,7 @@ function CategoriesPage({
                   <div className="mt-3 flex gap-2">
                     <button
                       onClick={() => openEditProduct(product)}
-                      className="rounded-2xl bg-blue-50 p-3 text-blue-700"
+                      className="rounded-2xl bg-emerald-50 p-3 text-emerald-700"
                     >
                       <Edit3 />
                     </button>
@@ -847,7 +847,7 @@ function CategoriesPage({
         </p>
         <button
           onClick={openAddCategory}
-          className="flex items-center gap-3 rounded-2xl bg-blue-600 px-4 py-3 text-sm font-black text-white"
+          className="flex items-center gap-3 rounded-2xl bg-emerald-600 px-4 py-3 text-sm font-black text-white"
         >
           <PlusCircle /> {t("addCategory")}
         </button>
@@ -897,7 +897,7 @@ function CategoriesPage({
                 <div className="flex gap-2">
                   <button
                     onClick={() => openEditCategory(category)}
-                    className="rounded-2xl bg-blue-50 p-3 text-blue-700"
+                    className="rounded-2xl bg-emerald-50 p-3 text-emerald-700"
                   >
                     <Edit3 />
                   </button>
@@ -916,7 +916,7 @@ function CategoriesPage({
     </motion.div>
   );
 }
-function CustomersPage({ t, customers, search, setSearch, openAdd, openEdit, deleteCustomer }) { const filtered = customers.filter((c) => c.name.toLowerCase().includes(search.toLowerCase())); return <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-4"><h2 className="text-2xl font-black">{t("customers")}</h2><div className="flex gap-4"><SearchBox value={search} onChange={setSearch} placeholder={t("searchCustomers")} /><button onClick={openAdd} className="flex shrink-0 items-center gap-2 rounded-2xl bg-blue-600 px-5 py-3 text-sm font-black text-white"><Users /> Add</button></div>{filtered.map((c) => <Card key={c.id} className="p-4"><div className="flex items-center justify-between gap-4"><div><p className="text-lg font-black">{c.name}</p><p className="mt-1 text-slate-500">{c.debtReceivable || c.debtPayable ? `Debt: ${formatMoney(c.debtReceivable - c.debtPayable)}` : t("noDebt")}</p>{c.phone && <p className="mt-1 text-sm text-slate-500">{c.phone}</p>}</div><div className="flex gap-2"><button onClick={() => openEdit(c)} className="rounded-2xl bg-blue-50 p-3 text-blue-700"><Edit3 /></button><button onClick={() => deleteCustomer(c.id)} className="rounded-2xl bg-red-50 p-3 text-red-500"><Trash2 /></button></div></div></Card>)}</motion.div>; }
+function CustomersPage({ t, customers, search, setSearch, openAdd, openEdit, deleteCustomer }) { const filtered = customers.filter((c) => c.name.toLowerCase().includes(search.toLowerCase())); return <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-4"><h2 className="text-2xl font-black">{t("customers")}</h2><div className="flex gap-4"><SearchBox value={search} onChange={setSearch} placeholder={t("searchCustomers")} /><button onClick={openAdd} className="flex shrink-0 items-center gap-2 rounded-2xl bg-emerald-600 px-5 py-3 text-sm font-black text-white"><Users /> Add</button></div>{filtered.map((c) => <Card key={c.id} className="p-4"><div className="flex items-center justify-between gap-4"><div><p className="text-lg font-black">{c.name}</p><p className="mt-1 text-slate-500">{c.debtReceivable || c.debtPayable ? `Debt: ${formatMoney(c.debtReceivable - c.debtPayable)}` : t("noDebt")}</p>{c.phone && <p className="mt-1 text-sm text-slate-500">{c.phone}</p>}</div><div className="flex gap-2"><button onClick={() => openEdit(c)} className="rounded-2xl bg-emerald-50 p-3 text-emerald-700"><Edit3 /></button><button onClick={() => deleteCustomer(c.id)} className="rounded-2xl bg-red-50 p-3 text-red-500"><Trash2 /></button></div></div></Card>)}</motion.div>; }
 
 function SalesHistoryPage({ t, sales, customers, openReceipt }) {
   const [search, setSearch] = useState("");
@@ -987,18 +987,18 @@ function SalesHistoryPage({ t, sales, customers, openReceipt }) {
       <Card className="p-4">
         <div className="mb-3 flex items-center justify-between">
           <h3 className="text-lg font-black">{t("receipts")}</h3>
-          <p className="text-xs font-black text-blue-700">{formatMoney(totalNet)}</p>
+          <p className="text-xs font-black text-emerald-700">{formatMoney(totalNet)}</p>
         </div>
         {filteredSales.length === 0 ? (
-          <p className="rounded-2xl border border-dashed border-blue-200 p-4 text-center text-slate-500">No receipts found</p>
+          <p className="rounded-2xl border border-dashed border-emerald-200 p-4 text-center text-slate-500">No receipts found</p>
         ) : (
           filteredSales.map((sale) => (
-            <button key={sale.id} onClick={() => openReceipt(sale)} className="mb-3 w-full rounded-2xl border border-blue-100 p-4 text-left last:mb-0">
+            <button key={sale.id} onClick={() => openReceipt(sale)} className="mb-3 w-full rounded-2xl border border-emerald-100 p-4 text-left last:mb-0">
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="font-black">Receipt {sale.receiptNo}</p>
                   <p className="mt-1 text-xs text-slate-500">{sale.customerName} · {new Date(sale.createdAt).toLocaleString()}</p>
-                  <span className={`mt-2 inline-flex rounded-full px-3 py-1 text-[11px] font-black ${sale.status === "cancelled" ? "bg-red-50 text-red-600" : sale.status === "returned" || sale.status === "partial_returned" ? "bg-amber-50 text-amber-700" : "bg-blue-50 text-blue-700"}`}>{getSaleStatusLabel(sale)}</span>
+                  <span className={`mt-2 inline-flex rounded-full px-3 py-1 text-[11px] font-black ${sale.status === "cancelled" ? "bg-red-50 text-red-600" : sale.status === "returned" || sale.status === "partial_returned" ? "bg-amber-50 text-amber-700" : "bg-emerald-50 text-emerald-700"}`}>{getSaleStatusLabel(sale)}</span>
                 </div>
                 <div className="text-right">
                   <p className="font-black">{formatMoney(getSaleNetTotal(sale))}</p>
@@ -1013,10 +1013,10 @@ function SalesHistoryPage({ t, sales, customers, openReceipt }) {
   );
 }
 
-function ReportsPage({ t, report, reportStart, reportEnd, setReportStart, setReportEnd, expenseTitle, setExpenseTitle, expenseAmount, setExpenseAmount, addExpense, openReceipt }) { return <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-4"><h2 className="text-2xl font-black">{t("reports")}</h2><Card className="p-4"><p className="mb-3 font-bold text-slate-500">{t("dateRange")}</p><div className="grid grid-cols-2 gap-3"><input type="date" value={reportStart} onChange={(e) => setReportStart(e.target.value)} className="h-11 rounded-2xl border border-slate-200 px-3 font-bold" /><input type="date" value={reportEnd} onChange={(e) => setReportEnd(e.target.value)} className="h-11 rounded-2xl border border-slate-200 px-3 font-bold" /></div><p className="mt-3 text-right font-bold text-slate-500">{report.sales.length} {t("salesInRange")}</p></Card><div className="grid grid-cols-2 gap-4"><Stat icon={<Wallet />} label="Revenue" value={formatMoney(report.revenue)} /><Stat icon={<TrendingUp />} label={t("profit")} value={formatMoney(report.profit)} /><Stat icon={<FileText />} label={t("expenses")} value={formatMoney(report.expenseTotal)} tone="amber" /><Stat icon={<TrendingUp />} label={t("debtReceivable")} value={formatMoney(report.debtReceivable)} /><Stat icon={<TrendingUp />} label={t("debtPayable")} value={formatMoney(report.debtPayable)} tone="red" /><Stat icon={<Wallet />} label={t("net")} value={formatMoney(report.net)} /></div><Card className="p-4"><h3 className="mb-4 text-lg font-black">{t("addExpense")}</h3><input value={expenseTitle} onChange={(e) => setExpenseTitle(e.target.value)} placeholder={t("expenseTitle")} className="mb-3 h-11 w-full rounded-2xl border border-slate-200 px-4 text-sm" /><input value={expenseAmount} onChange={(e) => setExpenseAmount(e.target.value)} type="number" placeholder={t("amount")} className="mb-4 h-11 w-full rounded-2xl border border-slate-200 px-4 text-sm" /><button onClick={addExpense} className="flex h-11 w-full items-center justify-center gap-3 rounded-2xl bg-blue-600 font-black text-white"><FileText /> {t("saveExpense")}</button></Card><ReceiptList title={t("transactionHistory")} sales={report.sales} openReceipt={openReceipt} empty="No transactions" /><ReportList title={t("bestSellers")} items={report.bestSellers.map((i, idx) => ({ id: idx, left: i.name, sub: `${i.qty} sold`, right: formatMoney(i.total) }))} empty="No best sellers" /><ReportList title={t("recentExpenses")} items={report.expenses.map((e) => ({ id: e.id, left: e.title, sub: new Date(e.createdAt).toLocaleString(), right: formatMoney(e.amount) }))} empty="No expenses" /></motion.div>; }
-function SettingsPage({ t, language, setLanguage, backup, restoreInputRef, openShopInfo, openAbout }) { const [openLang, setOpenLang] = useState(false); return <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-4"><h2 className="text-2xl font-black">{t("settings")}</h2><button onClick={() => setOpenLang(!openLang)} className="w-full text-left"><Card className="flex items-center justify-between p-4"><div className="flex items-center gap-4"><IconBox><Languages /></IconBox><div><p className="text-lg font-black">{t("language")}</p><p className="mt-1 text-slate-500">{language === "my" ? "မြန်မာ" : "English"}</p></div></div><ChevronRight className="text-blue-600" /></Card></button>{openLang && <Card className="overflow-hidden p-2"><button onClick={() => { setLanguage("my"); setOpenLang(false); }} className="w-full rounded-2xl px-4 py-3 text-left font-bold hover:bg-blue-50">မြန်မာ</button><button onClick={() => { setLanguage("en"); setOpenLang(false); }} className="w-full rounded-2xl px-4 py-3 text-left font-bold hover:bg-blue-50">English</button></Card>}<SettingRow icon={<House />} title={t("shopInfo")} sub={t("shopInfoSub")} onClick={openShopInfo} /><SettingRow icon={<Download />} title={t("backup")} sub={t("backupSub")} onClick={backup} /><SettingRow icon={<Upload />} title={t("restore")} sub={t("restoreSub")} onClick={() => restoreInputRef.current?.click()} /><SettingRow icon={<Info />} title={t("about")} sub={t("aboutSub")} onClick={openAbout} /></motion.div>; }
-function SettingRow({ icon, title, sub, onClick }) { return <button onClick={onClick} className="w-full text-left"><Card className="flex items-center justify-between p-4"><div className="flex items-center gap-4"><IconBox>{icon}</IconBox><div><p className="text-lg font-black">{title}</p><p className="mt-1 text-slate-500">{sub}</p></div></div><ChevronRight className="text-blue-600" /></Card></button>; }
-function SearchBox({ value, onChange, placeholder }) { return <div className="relative flex-1"><Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" /><input value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} className="h-12 w-full rounded-2xl border border-blue-100 bg-white pl-12 pr-4 text-sm outline-none focus:border-blue-400 focus:ring-4 focus:ring-blue-100" /></div>; }
+function ReportsPage({ t, report, reportStart, reportEnd, setReportStart, setReportEnd, expenseTitle, setExpenseTitle, expenseAmount, setExpenseAmount, addExpense, openReceipt }) { return <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-4"><h2 className="text-2xl font-black">{t("reports")}</h2><Card className="p-4"><p className="mb-3 font-bold text-slate-500">{t("dateRange")}</p><div className="grid grid-cols-2 gap-3"><input type="date" value={reportStart} onChange={(e) => setReportStart(e.target.value)} className="h-11 rounded-2xl border border-slate-200 px-3 font-bold" /><input type="date" value={reportEnd} onChange={(e) => setReportEnd(e.target.value)} className="h-11 rounded-2xl border border-slate-200 px-3 font-bold" /></div><p className="mt-3 text-right font-bold text-slate-500">{report.sales.length} {t("salesInRange")}</p></Card><div className="grid grid-cols-2 gap-4"><Stat icon={<Wallet />} label="Revenue" value={formatMoney(report.revenue)} /><Stat icon={<TrendingUp />} label={t("profit")} value={formatMoney(report.profit)} /><Stat icon={<FileText />} label={t("expenses")} value={formatMoney(report.expenseTotal)} tone="amber" /><Stat icon={<TrendingUp />} label={t("debtReceivable")} value={formatMoney(report.debtReceivable)} /><Stat icon={<TrendingUp />} label={t("debtPayable")} value={formatMoney(report.debtPayable)} tone="red" /><Stat icon={<Wallet />} label={t("net")} value={formatMoney(report.net)} /></div><Card className="p-4"><h3 className="mb-4 text-lg font-black">{t("addExpense")}</h3><input value={expenseTitle} onChange={(e) => setExpenseTitle(e.target.value)} placeholder={t("expenseTitle")} className="mb-3 h-11 w-full rounded-2xl border border-slate-200 px-4 text-sm" /><input value={expenseAmount} onChange={(e) => setExpenseAmount(e.target.value)} type="number" placeholder={t("amount")} className="mb-4 h-11 w-full rounded-2xl border border-slate-200 px-4 text-sm" /><button onClick={addExpense} className="flex h-11 w-full items-center justify-center gap-3 rounded-2xl bg-emerald-600 font-black text-white"><FileText /> {t("saveExpense")}</button></Card><ReceiptList title={t("transactionHistory")} sales={report.sales} openReceipt={openReceipt} empty="No transactions" /><ReportList title={t("bestSellers")} items={report.bestSellers.map((i, idx) => ({ id: idx, left: i.name, sub: `${i.qty} sold`, right: formatMoney(i.total) }))} empty="No best sellers" /><ReportList title={t("recentExpenses")} items={report.expenses.map((e) => ({ id: e.id, left: e.title, sub: new Date(e.createdAt).toLocaleString(), right: formatMoney(e.amount) }))} empty="No expenses" /></motion.div>; }
+function SettingsPage({ t, language, setLanguage, backup, restoreInputRef, openShopInfo, openAbout }) { const [openLang, setOpenLang] = useState(false); return <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="space-y-4"><h2 className="text-2xl font-black">{t("settings")}</h2><button onClick={() => setOpenLang(!openLang)} className="w-full text-left"><Card className="flex items-center justify-between p-4"><div className="flex items-center gap-4"><IconBox><Languages /></IconBox><div><p className="text-lg font-black">{t("language")}</p><p className="mt-1 text-slate-500">{language === "my" ? "မြန်မာ" : "English"}</p></div></div><ChevronRight className="text-emerald-600" /></Card></button>{openLang && <Card className="overflow-hidden p-2"><button onClick={() => { setLanguage("my"); setOpenLang(false); }} className="w-full rounded-2xl px-4 py-3 text-left font-bold hover:bg-emerald-50">မြန်မာ</button><button onClick={() => { setLanguage("en"); setOpenLang(false); }} className="w-full rounded-2xl px-4 py-3 text-left font-bold hover:bg-emerald-50">English</button></Card>}<SettingRow icon={<House />} title={t("shopInfo")} sub={t("shopInfoSub")} onClick={openShopInfo} /><SettingRow icon={<Download />} title={t("backup")} sub={t("backupSub")} onClick={backup} /><SettingRow icon={<Upload />} title={t("restore")} sub={t("restoreSub")} onClick={() => restoreInputRef.current?.click()} /><SettingRow icon={<Info />} title={t("about")} sub={t("aboutSub")} onClick={openAbout} /></motion.div>; }
+function SettingRow({ icon, title, sub, onClick }) { return <button onClick={onClick} className="w-full text-left"><Card className="flex items-center justify-between p-4"><div className="flex items-center gap-4"><IconBox>{icon}</IconBox><div><p className="text-lg font-black">{title}</p><p className="mt-1 text-slate-500">{sub}</p></div></div><ChevronRight className="text-emerald-600" /></Card></button>; }
+function SearchBox({ value, onChange, placeholder }) { return <div className="relative flex-1"><Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" /><input value={value} onChange={(e) => onChange(e.target.value)} placeholder={placeholder} className="h-12 w-full rounded-2xl border border-emerald-100 bg-white pl-12 pr-4 text-sm outline-none focus:border-emerald-400 focus:ring-4 focus:ring-emerald-100" /></div>; }
 function CategoryModal({ t, category, onClose, onSave }) {
   const [name, setName] = useState(category?.name || "");
   return (
@@ -1033,7 +1033,7 @@ function CategoryModal({ t, category, onClose, onSave }) {
         />
         <button
           onClick={() => onSave({ name })}
-          className="mt-4 flex h-12 w-full items-center justify-center gap-3 rounded-3xl bg-blue-600 text-base font-black text-white"
+          className="mt-4 flex h-12 w-full items-center justify-center gap-3 rounded-3xl bg-emerald-600 text-base font-black text-white"
         >
           <PlusCircle /> {category ? "Save" : t("addCategory")}
         </button>
@@ -1042,8 +1042,8 @@ function CategoryModal({ t, category, onClose, onSave }) {
   );
 }
 
-function ProductModal({ t, product, categoryId, onClose, onSave }) { const [form, setForm] = useState({ categoryId: product?.categoryId || categoryId || "", name: product?.name || "", sellPrice: product?.sellPrice || "", cost: product?.cost || "", stock: product?.stock || "", lowStockAlert: product?.lowStockAlert ?? 5 }); const set = (k, v) => setForm((p) => ({ ...p, [k]: v })); return <Modal title={product ? t("editItem") : t("addItem")} onClose={onClose}><div className="space-y-4"><Field label={t("productName")} value={form.name} onChange={(v) => set("name", v)} placeholder={t("productName")} /><div className="grid grid-cols-2 gap-4"><Field label={t("sellPrice")} value={form.sellPrice} onChange={(v) => set("sellPrice", v)} placeholder={t("sellPrice")} type="number" /><Field label={t("cost")} value={form.cost} onChange={(v) => set("cost", v)} placeholder={t("cost")} type="number" /></div><div className="grid grid-cols-2 gap-4"><Field label={t("stock")} value={form.stock} onChange={(v) => set("stock", v)} placeholder={t("stock")} type="number" /><Field label={t("lowStockAlert")} value={form.lowStockAlert} onChange={(v) => set("lowStockAlert", v)} placeholder="5" type="number" /></div><button onClick={() => onSave(form)} className="mt-4 flex h-12 w-full items-center justify-center gap-3 rounded-3xl bg-blue-600 text-base font-black text-white"><PlusCircle /> {product ? "Save" : t("addItem")}</button></div></Modal>; }
-function CustomerModal({ t, customer, onClose, onSave }) { const [form, setForm] = useState({ name: customer?.name || "", phone: customer?.phone || "", note: customer?.note || "" }); const set = (k, v) => setForm((p) => ({ ...p, [k]: v })); return <Modal title={customer ? t("editCustomer") : t("addCustomer")} onClose={onClose}><div className="space-y-4"><Field label={t("name")} value={form.name} onChange={(v) => set("name", v)} placeholder={t("name")} /><Field label={t("phone")} value={form.phone} onChange={(v) => set("phone", v)} placeholder={t("phone")} /><Field label={t("note")} value={form.note} onChange={(v) => set("note", v)} placeholder={t("note")} /><button onClick={() => onSave(form)} className="mt-4 flex h-12 w-full items-center justify-center gap-3 rounded-3xl bg-blue-600 text-base font-black text-white"><Users /> {customer ? "Save" : t("addCustomer")}</button></div></Modal>; }
+function ProductModal({ t, product, categoryId, onClose, onSave }) { const [form, setForm] = useState({ categoryId: product?.categoryId || categoryId || "", name: product?.name || "", sellPrice: product?.sellPrice || "", cost: product?.cost || "", stock: product?.stock || "", lowStockAlert: product?.lowStockAlert ?? 5 }); const set = (k, v) => setForm((p) => ({ ...p, [k]: v })); return <Modal title={product ? t("editItem") : t("addItem")} onClose={onClose}><div className="space-y-4"><Field label={t("productName")} value={form.name} onChange={(v) => set("name", v)} placeholder={t("productName")} /><div className="grid grid-cols-2 gap-4"><Field label={t("sellPrice")} value={form.sellPrice} onChange={(v) => set("sellPrice", v)} placeholder={t("sellPrice")} type="number" /><Field label={t("cost")} value={form.cost} onChange={(v) => set("cost", v)} placeholder={t("cost")} type="number" /></div><div className="grid grid-cols-2 gap-4"><Field label={t("stock")} value={form.stock} onChange={(v) => set("stock", v)} placeholder={t("stock")} type="number" /><Field label={t("lowStockAlert")} value={form.lowStockAlert} onChange={(v) => set("lowStockAlert", v)} placeholder="5" type="number" /></div><button onClick={() => onSave(form)} className="mt-4 flex h-12 w-full items-center justify-center gap-3 rounded-3xl bg-emerald-600 text-base font-black text-white"><PlusCircle /> {product ? "Save" : t("addItem")}</button></div></Modal>; }
+function CustomerModal({ t, customer, onClose, onSave }) { const [form, setForm] = useState({ name: customer?.name || "", phone: customer?.phone || "", note: customer?.note || "" }); const set = (k, v) => setForm((p) => ({ ...p, [k]: v })); return <Modal title={customer ? t("editCustomer") : t("addCustomer")} onClose={onClose}><div className="space-y-4"><Field label={t("name")} value={form.name} onChange={(v) => set("name", v)} placeholder={t("name")} /><Field label={t("phone")} value={form.phone} onChange={(v) => set("phone", v)} placeholder={t("phone")} /><Field label={t("note")} value={form.note} onChange={(v) => set("note", v)} placeholder={t("note")} /><button onClick={() => onSave(form)} className="mt-4 flex h-12 w-full items-center justify-center gap-3 rounded-3xl bg-emerald-600 text-base font-black text-white"><Users /> {customer ? "Save" : t("addCustomer")}</button></div></Modal>; }
 function AddItemsModal({
   t,
   categories,
@@ -1082,7 +1082,7 @@ function AddItemsModal({
                     setSelectedCategoryId(category.id);
                     setSearch("");
                   }}
-                  className="w-full rounded-2xl border border-blue-100 p-4 text-left transition hover:bg-blue-50"
+                  className="w-full rounded-2xl border border-emerald-100 p-4 text-left transition hover:bg-emerald-50"
                 >
                   <div className="flex items-center justify-between">
                     <div>
@@ -1091,7 +1091,7 @@ function AddItemsModal({
                         {count} {t("products")}
                       </p>
                     </div>
-                    <ChevronRight className="text-blue-600" />
+                    <ChevronRight className="text-emerald-600" />
                   </div>
                 </button>
               );
@@ -1114,7 +1114,7 @@ function AddItemsModal({
           setSelectedCategoryId("");
           setSearch("");
         }}
-        className="mb-4 flex items-center gap-2 font-black text-blue-700"
+        className="mb-4 flex items-center gap-2 font-black text-emerald-700"
       >
         <ArrowLeft size={20} /> {t("categories")}
       </button>
@@ -1133,7 +1133,7 @@ function AddItemsModal({
             <button
               key={product.id}
               onClick={() => addToCart(product)}
-              className="w-full rounded-2xl border border-blue-100 p-4 text-left transition hover:bg-blue-50"
+              className="w-full rounded-2xl border border-emerald-100 p-4 text-left transition hover:bg-emerald-50"
             >
               <div className="flex items-center justify-between">
                 <div>
@@ -1142,7 +1142,7 @@ function AddItemsModal({
                     {formatMoney(product.sellPrice)} · Stock {product.stock}
                   </p>
                 </div>
-                <PlusCircle className="text-blue-600" />
+                <PlusCircle className="text-emerald-600" />
               </div>
             </button>
           ))
@@ -1166,8 +1166,8 @@ function ReceiptModal({ t, sale, onCancelSale, onReturnItems, onClose }) {
       <button onClick={() => setReturnOpen(true)} className="flex h-11 items-center justify-center rounded-2xl bg-amber-50 px-3 text-xs font-black text-amber-700">{t("returnItems")}</button>
       <button onClick={() => onCancelSale(sale.id)} className="flex h-11 items-center justify-center rounded-2xl bg-red-50 px-3 text-xs font-black text-red-600">{t("cancelSale")}</button>
     </div>}
-    <button onClick={printIt} className="mt-3 flex h-11 w-full items-center justify-center gap-3 rounded-2xl bg-blue-600 font-black text-white"><Printer /> {t("printReceipt")}</button>
-    <button onClick={shareIt} className="mt-3 flex h-11 w-full items-center justify-center gap-3 rounded-2xl bg-blue-50 font-black text-blue-700"><Share2 /> {t("shareReceipt")}</button>
+    <button onClick={printIt} className="mt-3 flex h-11 w-full items-center justify-center gap-3 rounded-2xl bg-emerald-600 font-black text-white"><Printer /> {t("printReceipt")}</button>
+    <button onClick={shareIt} className="mt-3 flex h-11 w-full items-center justify-center gap-3 rounded-2xl bg-emerald-50 font-black text-emerald-700"><Share2 /> {t("shareReceipt")}</button>
     {returnOpen && <ReturnItemsModal t={t} sale={sale} onClose={() => setReturnOpen(false)} onSubmit={(qtyMap) => { onReturnItems(sale.id, qtyMap); setReturnOpen(false); }} />}
   </Modal>;
 }
@@ -1177,15 +1177,15 @@ function ReturnItemsModal({ t, sale, onClose, onSubmit }) {
     <div className="space-y-3">
       {sale.items.map((item) => {
         const maxQty = Math.max(0, Number(item.quantity || 0) - getItemReturnedQty(item));
-        return <div key={item.productId} className="rounded-2xl border border-blue-100 p-3">
+        return <div key={item.productId} className="rounded-2xl border border-emerald-100 p-3">
           <div className="mb-2 flex items-center justify-between gap-3">
             <div><p className="font-black">{item.productName}</p><p className="text-xs text-slate-500">Sold {item.quantity} · Available to return {maxQty}</p></div>
             <p className="font-black">{formatMoney(item.sellPrice)}</p>
           </div>
-          <input type="number" min="0" max={maxQty} value={qtyMap[item.productId] || ""} onChange={(e) => setQtyMap((prev) => ({ ...prev, [item.productId]: e.target.value }))} placeholder="Return qty" className="h-10 w-full rounded-xl border border-slate-200 px-3 text-sm outline-none focus:border-blue-400" />
+          <input type="number" min="0" max={maxQty} value={qtyMap[item.productId] || ""} onChange={(e) => setQtyMap((prev) => ({ ...prev, [item.productId]: e.target.value }))} placeholder="Return qty" className="h-10 w-full rounded-xl border border-slate-200 px-3 text-sm outline-none focus:border-emerald-400" />
         </div>;
       })}
-      <button onClick={() => onSubmit(qtyMap)} className="flex h-11 w-full items-center justify-center rounded-2xl bg-blue-600 font-black text-white">Save return</button>
+      <button onClick={() => onSubmit(qtyMap)} className="flex h-11 w-full items-center justify-center rounded-2xl bg-emerald-600 font-black text-white">Save return</button>
     </div>
   </Modal>;
 }
@@ -1204,7 +1204,7 @@ function ReceiptCard({ sale }) {
       <p>Receipt: <b className="text-slate-900">{sale.receiptNo}</b></p>
       <p>Date: {new Date(sale.createdAt).toLocaleString()}</p>
       <p>Customer: {sale.customerName}</p>
-      <p>Status: <b className={sale.status === "cancelled" ? "text-red-600" : sale.status === "returned" || sale.status === "partial_returned" ? "text-amber-600" : "text-blue-600"}>{getSaleStatusLabel(sale)}</b></p>
+      <p>Status: <b className={sale.status === "cancelled" ? "text-red-600" : sale.status === "returned" || sale.status === "partial_returned" ? "text-amber-600" : "text-emerald-600"}>{getSaleStatusLabel(sale)}</b></p>
     </div>
     <div className="my-4 border-t border-slate-200" />
     {sale.items.map((i) => <div key={i.productId} className="mb-3 flex justify-between gap-3"><div><p className="font-black">{i.productName}</p><p className="text-slate-500">{i.quantity} x {formatMoney(i.sellPrice)}{getItemReturnedQty(i) ? ` · returned ${getItemReturnedQty(i)}` : ""}</p></div><p className="font-black">{formatMoney(i.total)}</p></div>)}
@@ -1212,8 +1212,8 @@ function ReceiptCard({ sale }) {
     {shop.receiptFooter && <p className="mt-4 border-t border-slate-200 pt-3 text-center text-xs text-slate-500">{shop.receiptFooter}</p>}
   </Card>;
 }
-function ReceiptList({ title, sales, openReceipt, empty }) { return <Card className="p-4"><h3 className="mb-4 text-lg font-black">{title}</h3>{sales.length === 0 ? <p className="rounded-2xl border border-dashed border-blue-200 p-4 text-center text-slate-500">{empty}</p> : sales.map((sale) => <button key={sale.id} onClick={() => openReceipt(sale)} className="mb-3 flex w-full items-center justify-between rounded-2xl border border-blue-100 p-4 text-left last:mb-0"><div><p className="font-black">Receipt {sale.receiptNo}</p><p className="text-sm text-slate-500">{sale.customerName} · {getSaleStatusLabel(sale)} · {new Date(sale.createdAt).toLocaleString()}</p></div><p className="font-black">{formatMoney(getSaleNetTotal(sale))}</p></button>)}</Card>; }
-function ReportList({ title, items, empty }) { return <Card className="p-4"><h3 className="mb-4 text-lg font-black">{title}</h3>{items.length === 0 ? <p className="rounded-2xl border border-dashed border-blue-200 p-4 text-center text-slate-500">{empty}</p> : items.slice(0, 6).map((item) => <div key={item.id} className="mb-3 flex items-center justify-between rounded-2xl border border-blue-100 p-4 last:mb-0"><div><p className="font-black">{item.left}</p><p className="text-sm text-slate-500">{item.sub}</p></div><p className="font-black">{item.right}</p></div>)}</Card>; }
+function ReceiptList({ title, sales, openReceipt, empty }) { return <Card className="p-4"><h3 className="mb-4 text-lg font-black">{title}</h3>{sales.length === 0 ? <p className="rounded-2xl border border-dashed border-emerald-200 p-4 text-center text-slate-500">{empty}</p> : sales.map((sale) => <button key={sale.id} onClick={() => openReceipt(sale)} className="mb-3 flex w-full items-center justify-between rounded-2xl border border-emerald-100 p-4 text-left last:mb-0"><div><p className="font-black">Receipt {sale.receiptNo}</p><p className="text-sm text-slate-500">{sale.customerName} · {getSaleStatusLabel(sale)} · {new Date(sale.createdAt).toLocaleString()}</p></div><p className="font-black">{formatMoney(getSaleNetTotal(sale))}</p></button>)}</Card>; }
+function ReportList({ title, items, empty }) { return <Card className="p-4"><h3 className="mb-4 text-lg font-black">{title}</h3>{items.length === 0 ? <p className="rounded-2xl border border-dashed border-emerald-200 p-4 text-center text-slate-500">{empty}</p> : items.slice(0, 6).map((item) => <div key={item.id} className="mb-3 flex items-center justify-between rounded-2xl border border-emerald-100 p-4 last:mb-0"><div><p className="font-black">{item.left}</p><p className="text-sm text-slate-500">{item.sub}</p></div><p className="font-black">{item.right}</p></div>)}</Card>; }
 function ShopInfoModal({ t, settings, onClose, onSave }) {
   const [form, setForm] = useState({
     shopName: settings.shopName || "My Shop",
@@ -1228,7 +1228,7 @@ function ShopInfoModal({ t, settings, onClose, onSave }) {
       <Field label={t("shopPhone")} value={form.shopPhone} onChange={(v) => set("shopPhone", v)} placeholder="Shop phone" />
       <Field label={t("shopAddress")} value={form.shopAddress} onChange={(v) => set("shopAddress", v)} placeholder="Shop address" />
       <Field label={t("receiptFooter")} value={form.receiptFooter} onChange={(v) => set("receiptFooter", v)} placeholder="Thank you" />
-      <button onClick={() => onSave(form)} className="mt-4 flex h-12 w-full items-center justify-center rounded-3xl bg-blue-600 text-base font-black text-white">Save shop info</button>
+      <button onClick={() => onSave(form)} className="mt-4 flex h-12 w-full items-center justify-center rounded-3xl bg-emerald-600 text-base font-black text-white">Save shop info</button>
     </div>
   </Modal>;
 }
