@@ -35,8 +35,8 @@ import {
 } from "lucide-react";
 
 const STORAGE_KEY = "minipos_mm_offline_pos_v1";
-const PHONE_NUMBER = "09661919266";
-const VIBER_NUMBER = "+959661919266";
+const PHONE_NUMBER = "";
+const VIBER_NUMBER = "";
 
 const dict = {
   en: {
@@ -214,39 +214,9 @@ const dict = {
 const DEFAULT_CATEGORY_ID = "default-battery-category";
 
 const initialData = {
-  categories: [
-    {
-      id: DEFAULT_CATEGORY_ID,
-      name: "Battery",
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    },
-  ],
-  products: [
-    {
-      id: crypto.randomUUID(),
-      categoryId: DEFAULT_CATEGORY_ID,
-      name: "Battery",
-      sellPrice: 160000,
-      cost: 120000,
-      stock: 2,
-      lowStockAlert: 5,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    },
-  ],
-  customers: [
-    {
-      id: crypto.randomUUID(),
-      name: "MayMyatThu",
-      phone: "",
-      note: "",
-      debtReceivable: 0,
-      debtPayable: 0,
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-    },
-  ],
+  categories: [],
+  products: [],
+  customers: [],
   sales: [],
   expenses: [],
   settings: {
@@ -257,7 +227,7 @@ const initialData = {
     shopName: "My Shop",
     shopPhone: "",
     shopAddress: "",
-    receiptFooter: "Thank you for your purchase.",
+    receiptFooter: "Thank you for shopping with us.",
   },
 };
 
@@ -455,14 +425,12 @@ function Modal({ title, onClose, children }) {
   return <AnimatePresence><motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/45 p-4 backdrop-blur-sm"><motion.div initial={{ y: 40, scale: 0.96, opacity: 0 }} animate={{ y: 0, scale: 1, opacity: 1 }} exit={{ y: 40, scale: 0.96, opacity: 0 }} className="max-h-[88vh] w-full max-w-md overflow-y-auto rounded-2xl border border-blue-100 bg-white p-4 shadow-2xl"><div className="mb-6 flex items-center justify-between"><h2 className="text-xl font-black tracking-tight text-slate-950">{title}</h2><button onClick={onClose} className="flex items-center gap-2 rounded-2xl bg-blue-50 px-4 py-3 font-bold text-blue-700"><X size={20} /> Close</button></div>{children}</motion.div></motion.div></AnimatePresence>;
 }
 
-export default function MiniPosApp() {
+export default function HeinsInventoryApp() {
   const [tab, setTab] = useState("home");
   const [menuOpen, setMenuOpen] = useState(false);
   const [data, setData] = useState(() => {
     try {
-      const s =
-        localStorage.getItem(STORAGE_KEY) ||
-        localStorage.getItem("minipos_mm_offline_pos_v0");
+      const s = localStorage.getItem(STORAGE_KEY);
       if (!s) return initialData;
       return migrateData(JSON.parse(s));
     } catch {
@@ -668,7 +636,7 @@ export default function MiniPosApp() {
   };
 
   const backup = async () => {
-    const fileName = `minipos-mm-backup-${todayISO()}.json`;
+    const fileName = `heins-inventory-backup-${todayISO()}.json`;
     const json = JSON.stringify(data, null, 2);
     try {
       if (window.showSaveFilePicker) {
@@ -1249,7 +1217,7 @@ function ReportList({ title, items, empty }) { return <Card className="p-4"><h3 
 function ShopInfoModal({ t, settings, onClose, onSave }) {
   const [form, setForm] = useState({
     shopName: settings.shopName || "My Shop",
-    shopPhone: settings.shopPhone || PHONE_NUMBER,
+    shopPhone: settings.shopPhone || "",
     shopAddress: settings.shopAddress || "",
     receiptFooter: settings.receiptFooter || "",
   });
@@ -1257,11 +1225,11 @@ function ShopInfoModal({ t, settings, onClose, onSave }) {
   return <Modal title={t("shopInfo")} onClose={onClose}>
     <div className="space-y-4">
       <Field label={t("shopName")} value={form.shopName} onChange={(v) => set("shopName", v)} placeholder="My Shop" />
-      <Field label={t("shopPhone")} value={form.shopPhone} onChange={(v) => set("shopPhone", v)} placeholder="09661919266" />
+      <Field label={t("shopPhone")} value={form.shopPhone} onChange={(v) => set("shopPhone", v)} placeholder="Shop phone" />
       <Field label={t("shopAddress")} value={form.shopAddress} onChange={(v) => set("shopAddress", v)} placeholder="Shop address" />
       <Field label={t("receiptFooter")} value={form.receiptFooter} onChange={(v) => set("receiptFooter", v)} placeholder="Thank you" />
       <button onClick={() => onSave(form)} className="mt-4 flex h-12 w-full items-center justify-center rounded-3xl bg-blue-600 text-base font-black text-white">Save shop info</button>
     </div>
   </Modal>;
 }
-function AboutModal({ onClose }) { return <Modal title="About" onClose={onClose}><div className="space-y-4"><Card className="p-4 shadow-none"><h3 className="text-lg font-black">MiniPOS MM</h3><p className="mt-4 leading-8 text-slate-500">MiniPOS MM is an offline point-of-sale app for small shops. It keeps products, stock, sales, expenses, reports, backups, and receipts on your device.</p></Card><Card className="p-4 shadow-none"><h3 className="text-lg font-black">Contact</h3><a href={`tel:${PHONE_NUMBER}`} className="mt-4 flex items-center gap-3 rounded-2xl bg-blue-50 p-4 font-black text-blue-700"><Phone /> Phone: {PHONE_NUMBER}</a><a href={`viber://chat?number=${encodeURIComponent(VIBER_NUMBER)}`} className="mt-3 flex items-center gap-3 rounded-2xl bg-blue-50 p-4 font-black text-blue-700"><MessageCircle /> Viber: {PHONE_NUMBER}</a></Card></div></Modal>; }
+function AboutModal({ onClose }) { return <Modal title="About" onClose={onClose}><div className="space-y-4"><Card className="p-4 shadow-none"><h3 className="text-lg font-black">MiniPOS MM</h3><p className="mt-4 leading-8 text-slate-500">MiniPOS MM is a general offline point-of-sale app for small shops. It keeps categories, products, stock, sales, customers, expenses, reports, backups, returns, cancellations, and receipts on your device.</p></Card><Card className="p-4 shadow-none"><h3 className="text-lg font-black">Shop contact</h3><p className="mt-3 leading-7 text-slate-500">Add your own shop phone number, address, and receipt footer from Settings → Shop info. No default phone number is included.</p></Card></div></Modal>; }
